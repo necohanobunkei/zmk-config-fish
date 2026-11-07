@@ -1,4 +1,5 @@
 // デフォルトキーマップ（大西配列、Win優先、JIS方式）
+// ＋ お絵描きレイヤー（Umoupen優先、左手親機単体で使用可）
 // キーマップを更新する方法は https://o24.works/fish/guide を参照
 // 視覚的に編集するには https://o24.works/fish/editor を参照
 
@@ -89,6 +90,12 @@
             key-positions = <20 21 22 23>;
             bindings = <&studio_unlock>;
         };
+
+        // お絵描きレイヤー（7）のオン／オフ：左手の0番＋8番（通常配列ではL＋Q）
+        combo_paint {
+            key-positions = <0 8>;
+            bindings = <&tog 7>;
+        };
     };
     
 
@@ -162,21 +169,31 @@
             >;
         };
 
+        // レイヤー7：お絵描き（Umoupen優先・JIS方式）
+        //   上段：  ―   [ブラシ小  ↑レイヤー  ]ブラシ大
+        //   中段：― 戻る  ←コマ  ↓レイヤー  →コマ  S色切替
+        //   下段：  進む  回転左  回転リセット  回転右
+        //   親指：  押す間サブ  Space再生停止
+        //   右手は通常配列のまま（子機の電源が入っていれば文字入力可）
         layer_extra_1 {
             bindings = <
-                        &none       &none       &none       &none               &none       &none       &none       &none
-&none       &none       &none       &none       &none       &none               &none       &none       &none       &none       &none       &none 
-            &none       &none       &none       &none                                       &none       &none       &none       &none
-                                                &none       &none               &none       &none       
+                        &none       &kp RBKT    &kp UP      &kp NUHS            &trans      &trans      &trans      &trans
+&none       &kp LC(Z)   &kp LEFT    &kp DOWN    &kp RIGHT   &kp S               &trans      &trans      &trans      &trans      &trans      &trans 
+            &kp LC(LS(Z)) &kp LS(A) &kp LC(LA(R)) &kp LS(D)                                 &trans      &trans      &trans      &trans
+                                                &mo 8       &kp SPACE           &trans      &trans       
             >;
         };
 
+        // レイヤー8：お絵描きサブ（親指28を押している間）
+        //   上段：  ―   ズーム−  ―   ズーム＋（Ctrl+;）
+        //   中段：保存  Alt1  Alt2  Alt3  Alt4  Alt5
+        //   下段：  Alt6  Alt7  Alt8  Alt9
         layer_extra_2 {
             bindings = <
-                        &none       &none       &none       &none               &none       &none       &none       &none
-&none       &none       &none       &none       &none       &none               &none       &none       &none       &none       &none       &none 
-            &none       &none       &none       &none                                       &none       &none       &none       &none
-                                                &none       &none               &none       &none       
+                        &none       &kp LC(MINUS) &none     &kp LC(SEMI)        &trans      &trans      &trans      &trans
+&kp LC(S)   &kp LA(N1)  &kp LA(N2)  &kp LA(N3)  &kp LA(N4)  &kp LA(N5)          &trans      &trans      &trans      &trans      &trans      &trans 
+            &kp LA(N6)  &kp LA(N7)  &kp LA(N8)  &kp LA(N9)                                  &trans      &trans      &trans      &trans
+                                                &trans      &trans              &trans      &trans       
             >;
         };
 
