@@ -172,28 +172,29 @@
         // レイヤー7：お絵描き（Umoupen優先・JIS方式）
         //   上段：  ―   [ブラシ小  ↑レイヤー  ]ブラシ大
         //   中段：― 戻る  ←コマ  ↓レイヤー  →コマ  S色切替
-        //   下段：  進む  回転左  回転リセット  回転右
-        //   親指：  押す間サブ  Space再生停止
+        //   下段：  進む  回転左  オニオンスキン切替(L)  回転右
+        //   親指：  押す間サブ  カメラから再生(Alt+P)
         //   右手は通常配列のまま（子機の電源が入っていれば文字入力可）
         layer_extra_1 {
             bindings = <
                         &none       &kp RBKT    &kp UP      &kp NUHS            &trans      &trans      &trans      &trans
 &none       &kp LC(Z)   &kp LEFT    &kp DOWN    &kp RIGHT   &kp S               &trans      &trans      &trans      &trans      &trans      &trans 
-            &kp LC(LS(Z)) &kp LS(A) &kp LC(LA(R)) &kp LS(D)                                 &trans      &trans      &trans      &trans
-                                                &mo 8       &kp SPACE           &trans      &trans       
+            &kp LC(LS(Z)) &kp LS(A) &kp L       &kp LS(D)                                   &trans      &trans      &trans      &trans
+                                                &mo 8       &kp LA(P)           &trans      &trans       
             >;
         };
 
         // レイヤー8：お絵描きサブ（親指28を押している間）
-        //   上段：  ―   ズーム−  ―   ズーム＋（Ctrl+;）
-        //   中段：保存  Alt1  Alt2  Alt3  Alt4  Alt5
-        //   下段：  Alt6  Alt7  Alt8  Alt9
+        //   上段：  回転リセット  ズーム−  Esc  ズーム＋（Ctrl+;）
+        //   中段：保存  Alt1  Alt2  Alt3  Alt4  フレームをマーク(K)
+        //   下段：  前のマーク(5)  次のマーク(6)  前のオニオン(,)  次のオニオン(.)
+        //   親指：  （押している）  Space再生停止
         layer_extra_2 {
             bindings = <
-                        &none       &kp LC(MINUS) &none     &kp LC(SEMI)        &trans      &trans      &trans      &trans
-&kp LC(S)   &kp LA(N1)  &kp LA(N2)  &kp LA(N3)  &kp LA(N4)  &kp LA(N5)          &trans      &trans      &trans      &trans      &trans      &trans 
-            &kp LA(N6)  &kp LA(N7)  &kp LA(N8)  &kp LA(N9)                                  &trans      &trans      &trans      &trans
-                                                &trans      &trans              &trans      &trans       
+                        &kp LC(LA(R)) &kp LC(MINUS) &kp ESC   &kp LC(SEMI)        &trans      &trans      &trans      &trans
+&kp LC(S)   &kp LA(N1)  &kp LA(N2)  &kp LA(N3)  &kp LA(N4)  &kp K               &trans      &trans      &trans      &trans      &trans      &trans 
+            &kp N5      &kp N6      &kp COMMA   &kp DOT                                     &trans      &trans      &trans      &trans
+                                                &trans      &kp SPACE           &trans      &trans       
             >;
         };
 
